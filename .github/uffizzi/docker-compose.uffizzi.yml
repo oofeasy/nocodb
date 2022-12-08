@@ -13,12 +13,20 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: postgres
       POSTGRES_DB: root_db
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
   mssql:
     image: "mcr.microsoft.com/mssql/server:2017-latest"
     restart: always
     environment: 
       ACCEPT_EULA: "Y"
       SA_PASSWORD: Password123.
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
   mysql: 
     environment: 
       MYSQL_DATABASE: root_db
@@ -27,6 +35,10 @@ services:
       MYSQL_USER: noco
     image: "mysql:5.7"
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
   nocodb:
     image: "${NOCODB_IMAGE}"
     ports:
